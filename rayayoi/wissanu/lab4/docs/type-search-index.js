@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"rayayoi.wissanu.lab4","l":"DisplayMatrix"},{"p":"rayayoi.wissanu.lab4","l":"SicBoV2"},{"p":"rayayoi.wissanu.lab4","l":"SicBoV3"},{"p":"rayayoi.wissanu.lab4","l":"SicBoV4"}];updateSearchResults();
