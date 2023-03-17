@@ -45,7 +45,7 @@ public class AthleteFormV13 extends AthleteFormV12 {
 public void actionPerformed(ActionEvent event) {
     Object src = event.getSource();
     if (src == weightField || src == heightField) {
-        System.out.println("โปเต้สุดหล่อ8;ppppอะ");
+        System.out.println("โปเต้สุดหล่ออะ");
         notifyNumberTxtFieldChange(heightField);
         notifyNumberTxtFieldChange(weightField);
         System.out.println(weightReturn);
