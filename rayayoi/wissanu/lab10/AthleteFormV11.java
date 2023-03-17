@@ -1,5 +1,29 @@
 package rayayoi.wissanu.lab10;
 
+ /**
+ * This program call AhleteFormV11 that extends from AthleteFormV10
+ * 1) Create menu Data which has menu items  Add, Display, Clear, Search and menu Sort 
+ * which has menu items “By Name”, “By Height”, and “By Height and Weight”   These menus 
+ * and menu items should have the fonts the same as other menus and menu items
+ * 2) When the user clicks menu item add, the program will display the information of the athlete 
+ * which is the string returned from the function toString() of class AthleteV2 in 
+ * the dialog. The program also adds this athlete object into the array list. 
+ * 3) When the user clicks menu item Display, the program displays 
+ * the list of the athletes 
+ * 4) When the user clicks the menu item “Clear” the program removes all 	
+ * athletes in the list.
+ * 5) When the user clicks the menu item “Search”, the program opens the input dialog 	to accept the athlete name to search as shown in Figure 12.  If the athlete with that name is 	found, the program 	displays the message in the format <AthleteV2  a> is found as shown 	in Figure 13.
+ * If the athlete enters. The search athlete that is not in the list,      
+ * the program displays the message in the format "Athlete <name> is NOT found" 
+ * 
+
+ * Authur: Wissanu Rayayoi
+ * ID : 653040460-3
+ * Sec.1
+ * Date : March 10, 2023
+ * 
+ */
+
 import java.util.*;
 import javax.swing.*;
 import java.awt.*;
@@ -19,40 +43,36 @@ public class AthleteFormV11 extends AthleteFormV10 {
     protected ArrayList<AthleteV2> altArrList =  new ArrayList<AthleteV2>();
     protected String athleteStr, fullStr, dataAtl;
 
-    //protected Gender genderType; 
-
     public AthleteFormV11(String Window) {
         super(Window);
     }
     
     @Override
     public void addMenu() {
-        super.addMenu();   
+        super.addMenu();
+        //create data menu
         dataMenu = new JMenu("Data");
-
+        //Create menu,item in data
         sortItem = new JMenu("Sort");
-
         addItem = new JMenuItem("Add");
         displayItem = new JMenuItem("Display");
         clearItem = new JMenuItem("Clear");
         searchItem = new JMenuItem("Search");
-
-        byNameItem = new JMenuItem("by Name");
-        byHeightItem = new JMenuItem("by Height");
-        byHeightWeightItem = new JMenuItem("By weight height");
-
-        sortItem.add(byNameItem);
-        sortItem.add(byHeightItem);
-        sortItem.add(byHeightWeightItem);
-        
         dataMenu.add(addItem);
         dataMenu.add(displayItem);
         dataMenu.add(clearItem);
         dataMenu.add(searchItem);
         dataMenu.add(sortItem);
-
+        //Create item for sort menu
+        byNameItem = new JMenuItem("by Name");
+        byHeightItem = new JMenuItem("by Height");
+        byHeightWeightItem = new JMenuItem("By weight height");
+        sortItem.add(byNameItem);
+        sortItem.add(byHeightItem);
+        sortItem.add(byHeightWeightItem);
+        //Add data menu to menu bar
         menuBar.add(dataMenu);
-
+        //Set font and foreground
         menuFont = new Font("SanSerif", Font.BOLD, 14);
         dataMenu.setFont(menuFont);
         addItem.setFont(menuFont);
@@ -82,9 +102,9 @@ public class AthleteFormV11 extends AthleteFormV10 {
         addItem.addActionListener(this);
         displayItem.addActionListener(this);
         clearItem.addActionListener(this);
-        searchItem.addActionListener(this);    }
-
-    public Gender toGender() {
+        searchItem.addActionListener(this);    
+    }
+    public Gender toGender() { //Check gender and return
         if (maleButton.isSelected()) {
             return Gender.MALE;
         } else {
@@ -92,42 +112,19 @@ public class AthleteFormV11 extends AthleteFormV10 {
         }
     }
 
-    // public boolean checkAdd(AthleteV2 athlete) {
-    //     return checkAddBl;
-    //}
     public void addAthlete() {
         double weightDouble = Double.parseDouble(weightField.getText());
         double heightDouble = Double.parseDouble(heightField.getText());
-        AthleteV2 alt = new AthleteV2(nameField.getText(), weightDouble, heightDouble, toGender(), nationComboBox.getSelectedItem().toString(), dateField.getText());
-        //checkAdd(alt);
-        /**AthleteV2 p = new AthleteV2("potae", 17, 891, Gender.FEMALE, "gghh", "12/02/1200");
-        AthleteV2 p1 = new AthleteV2("pota", 19, 367, Gender.FEMALE, "gghh", "12/04/2028");
-        AthleteV2 p2 = new AthleteV2("pot", 137, 57, Gender.FEMALE, "gghh", "12/03/2018");
-        AthleteV2 p3 = new AthleteV2("po", 155, 88, Gender.FEMALE, "gghh", "12/01/2013");
-        AthleteV2 p4 = new AthleteV2("p", 138, 7740, Gender.FEMALE, "gghh", "12/10/2000");
-
-        altArrList.add(p);
-        altArrList.add(p1);
-        altArrList.add(p2);
-        altArrList.add(p3);
-        altArrList.add(p4);*/
-        // if (checkAddBl = true) {
-        //     altArrList.add(alt);
-        //     JOptionPane.showMessageDialog(null,  alt);            
-        // } else {
-            
-        // }
-        // System.out.println(checkAddBl);
-        altArrList.add(alt);
+        AthleteV2 alt = new AthleteV2(nameField.getText(), weightDouble, heightDouble, toGender(), 
+            nationComboBox.getSelectedItem().toString(), dateField.getText());
+        altArrList.add(alt); //Add AthleteV2 to athlete array list
         JOptionPane.showMessageDialog(null,  alt);
-
     }
 
-    public void displayAthlete() {
+    public void displayAthlete() { //Display the athlete
         dataAtl = "";
         int countalt = 0;
-
-        for (Athlete alt : altArrList) {
+        for (Athlete alt : altArrList) { //Count athlete in athlete array list
             countalt++;
             dataAtl += countalt + ". "  + alt + "\n";
         }
@@ -138,20 +135,20 @@ public class AthleteFormV11 extends AthleteFormV10 {
             JOptionPane.showMessageDialog(null,"There are " + altArrList.size() + " as follows :" + "\n" + dataAtl);
         }
     }
-    public void clearAthlete() {
+
+    public void clearAthlete() { //Clear athlete in array list
         altArrList.clear();
     }
 
-    public void searchAthlete() {
+    public void searchAthlete() { //Method to search athlete
         String searchAlt = JOptionPane.showInputDialog("Please enter athlete name :");
-        if (altArrList.size() == 0) {
+        if (altArrList.size() == 0) { //if not have data in array list
             JOptionPane.showMessageDialog(null, "No data" );
         } else {
             for (int i = 0; i < altArrList.size(); i++) {
                 if (searchAlt.equalsIgnoreCase(altArrList.get(i).getName())) {
                     JOptionPane.showMessageDialog(null, altArrList.get(i));
                     break;
-    
                 } else {
                     if (i == altArrList.size() - 1)
                     JOptionPane.showMessageDialog(null, "Athlete " + searchAlt + " is not found." );
@@ -159,9 +156,8 @@ public class AthleteFormV11 extends AthleteFormV10 {
     
             }
         }
-
-        //JOptionPane.showInputDialog("dfdd",altArrList); 
     }
+    
     @Override
     public void actionPerformed(ActionEvent event) {
         super.actionPerformed(event);

@@ -1,5 +1,22 @@
 package rayayoi.wissanu.lab10;
 
+ /**
+ * This program call AhleteFormV12 that extends from AthleteFormV11
+ * 1) After the user clicks menu Sort >> By Name, then the program should show 
+ * the list of athletes sorted by length of names(short to long) without clicking menu item Display.
+ * 2) After the user clicks menu Sort >> By Height, then the program should show 
+ * the list of athletes sorted by heights(low to high) without clicking menu item Display.
+ * 3) After the user clicks menu Sort >> By Height and Weight, then the program should show 
+ * the list of athletes sorted by height and then weight(from low to high) without clicking menu item Display.
+ * 
+ * 
+ * Authur: Wissanu Rayayoi
+ * ID : 653040460-3
+ * Sec.1
+ * Date : March 10, 2023
+ * 
+ */
+
 import java.util.*;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -13,8 +30,7 @@ public class AthleteFormV12 extends AthleteFormV11 {
         super(Window);
     }
 
-    class NameComparator implements Comparator<AthleteV2> {
-    
+    class NameComparator implements Comparator<AthleteV2> { //Class to compare name
         @Override
         public int compare(AthleteV2 athlete1, AthleteV2 athlete2) {
             int length1 = athlete1.getName().length();
@@ -23,8 +39,7 @@ public class AthleteFormV12 extends AthleteFormV11 {
         }
     }
 
-    class HeightComparator implements Comparator<AthleteV2> {
-
+    class HeightComparator implements Comparator<AthleteV2> { //Class to compare height
         @Override
         public int compare(AthleteV2 athlete1, AthleteV2 athlete2) {
             double length1 = athlete1.getHeight();
@@ -33,15 +48,13 @@ public class AthleteFormV12 extends AthleteFormV11 {
         } 
     }
 
-    class HeightWeightComparator implements Comparator<AthleteV2> {
-
+    class HeightWeightComparator implements Comparator<AthleteV2> { //Class to compare height and weight
         @Override
         public int compare(AthleteV2 athlete1, AthleteV2 athlete2) {
             double height1 = athlete1.getHeight();
             double height2 = athlete2.getHeight();
             double weight1 = athlete1.getWeight();
             double weight2 = athlete2.getWeight();
-            //return height1 < height2 ? -1 : height1 == height2 ? 0 : 1;
             if (height1 < height2) { 
                 return -1;
             } else if (height1 == height2) {

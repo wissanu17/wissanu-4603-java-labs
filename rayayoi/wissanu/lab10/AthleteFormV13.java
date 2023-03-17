@@ -1,14 +1,23 @@
 package rayayoi.wissanu.lab10;
 
+ /**
+ * 1) After the user clicks menu Add, then the program checks the value of weight and finds that weight is not a number text.
+ * Then, the program displays the dialog with the message “Please enter a valid number for Weight”
+ * 2) After the user clicks menu Add, then the program checks the value of height and finds that height is not a number text.  
+ * Then, the program displays the dialog with the message “Please enter a valid number for Height” 
+ * 3) And check number of weight(0-200) and height(0-300)
+ * 4) If the user enters both invalid weight and invalid height, the program will check weight and display 
+ * the error message and then stop the program execution. 
+ *  
+ * Authur: Wissanu Rayayoi
+ * ID : 653040460-3
+ * Sec.1
+ * Date : March 10, 2023
+ * 
+ */
+
 import javax.swing.*;
-
-import rayayoi.wissanu.lab6.AthleteV2;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.text.ParseException;
-
+import java.awt.event.*;
 
 public class AthleteFormV13 extends AthleteFormV12 {
 
@@ -21,7 +30,7 @@ public class AthleteFormV13 extends AthleteFormV12 {
 
     public double getValidNumber(String number, JTextField name, int max) {
         double returnCase = 0;
-        if (!number.matches("\\d+(\\.\\d+)?")) { // check if input string contains only numeric characters
+        if (!number.matches("\\d+(\\.\\d+)?")) { // check if input string is not numeric characters
             returnCase = -1;
         } else if (name == weightField) {
             double weight = Double.parseDouble(number);
@@ -41,36 +50,27 @@ public class AthleteFormV13 extends AthleteFormV12 {
         return returnCase;
     }
 
-@Override
-public void actionPerformed(ActionEvent event) {
-    Object src = event.getSource();
-    if (src == weightField || src == heightField) {
-        System.out.println("โปเต้สุดหล่ออะ");
-        notifyNumberTxtFieldChange(heightField);
-        notifyNumberTxtFieldChange(weightField);
-        System.out.println(weightReturn);
-        System.out.println(heightReturn);
-        messageWarn();
-        System.out.println(checkAddBl);
-        if (checkAddBl == true) {
-            System.out.println(checkAddBl + "right");
-            super.actionPerformed(event);           
+    @Override
+    public void actionPerformed(ActionEvent event) {
+        Object src = event.getSource();
+        if (src == weightField || src == heightField) {
+            notifyNumberTxtFieldChange(heightField);
+            notifyNumberTxtFieldChange(weightField);
+            messageWarn();
+            if (checkAddBl == true) {
+                super.actionPerformed(event);           
+            } else {
+                return;
+            }
         } else {
-            System.out.println(checkAddBl+ "wrong");
-            return;
+            super.actionPerformed(event);
         }
-    } else {
-        System.out.println("kkkkkkk");
-        super.actionPerformed(event);
     }
-}
 
     @Override
     public void addAthlete() {
         notifyNumberTxtFieldChange(heightField);
         notifyNumberTxtFieldChange(weightField);
-        System.out.println(weightReturn);
-        System.out.println(heightReturn);
         messageWarn();
         System.out.println(checkAddBl);
         if (checkAddBl == true) {
