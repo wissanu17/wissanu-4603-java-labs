@@ -84,24 +84,24 @@ public class AthleteFormV13 extends AthleteFormV12 {
 
     public void messageWarn() {
         if ((weightReturn == 0 || weightReturn == -1) && (heightReturn == 0 || heightReturn == -1)) {
-            JOptionPane.showMessageDialog(null, "Wrong both", athleteStr, JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Wrong input", athleteStr, JOptionPane.ERROR_MESSAGE);
             checkAddBl = false;
             System.exit(0);
         } else if (weightReturn == 0) {
-            JOptionPane.showMessageDialog(null, "Wrong Weight 0-200", athleteStr, JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Wrong Weight, it should between 0-200", athleteStr, JOptionPane.ERROR_MESSAGE);
             checkAddBl = false;
         } else if (weightReturn == 1) {
             checkAddBl = true;
         } else if (weightReturn == -1) {
-            JOptionPane.showMessageDialog(null, "Wrong type weight", athleteStr, JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please enter a valid number for Weight", athleteStr, JOptionPane.ERROR_MESSAGE);
             checkAddBl = false;
         } else if (heightReturn == 0) {
-            JOptionPane.showMessageDialog(null, "Wrong height 0-200", athleteStr, JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Wrong height, it should between 0-200", athleteStr, JOptionPane.ERROR_MESSAGE);
             checkAddBl = false;
         } else if (heightReturn == 1) {
             checkAddBl = false;
         } else if (heightReturn == -1) {
-            JOptionPane.showMessageDialog(null, "Wrong type tall", athleteStr, JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Please enter a valid number for Height", athleteStr, JOptionPane.ERROR_MESSAGE);
             checkAddBl = false;
         }
     }
@@ -109,12 +109,6 @@ public class AthleteFormV13 extends AthleteFormV12 {
 
     public void notifyNumberTxtFieldChange(JTextField txtField) {
         String numberTxt = txtField.getText();
-        //String name = txtField.getName();
-        //System.out.println(numberTxt);
-        //if (numberTxt.trim().isEmpty()) { // check if text is empty or only contains whitespace
-            // handle empty text
-            //return;
-        //}
         if (txtField == weightField) {
             weightReturn = getValidNumber(numberTxt, txtField, 200);
             //System.out.println(weightReturn);
