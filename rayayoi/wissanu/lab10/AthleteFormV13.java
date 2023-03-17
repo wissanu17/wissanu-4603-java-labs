@@ -74,10 +74,8 @@ public class AthleteFormV13 extends AthleteFormV12 {
         messageWarn();
         System.out.println(checkAddBl);
         if (checkAddBl == true) {
-            System.out.println(checkAddBl + "right");
             super.addAthlete();           
         } else {
-            System.out.println(checkAddBl+ "wrong");
             return;
         }
     }
@@ -87,23 +85,25 @@ public class AthleteFormV13 extends AthleteFormV12 {
             JOptionPane.showMessageDialog(null, "Wrong input", athleteStr, JOptionPane.ERROR_MESSAGE);
             checkAddBl = false;
             System.exit(0);
-        } else if (weightReturn == 0) {
-            JOptionPane.showMessageDialog(null, "Wrong Weight, it should between 0-200", athleteStr, JOptionPane.ERROR_MESSAGE);
+        } else if (weightReturn == 0 || heightReturn == 0) {
+            if (weightReturn == 0){
+                JOptionPane.showMessageDialog(null, "Wrong Weight, it should between 0-200", athleteStr, JOptionPane.ERROR_MESSAGE);
+            } else if (heightReturn == 0) {
+                JOptionPane.showMessageDialog(null, "Wrong height, it should between 0-200", athleteStr, JOptionPane.ERROR_MESSAGE);
+            
+            }
             checkAddBl = false;
-        } else if (weightReturn == 1) {
+        } else if (weightReturn == -1 || heightReturn == -1) {
+            if (weightReturn == -1) {
+                JOptionPane.showMessageDialog(null, "Please enter a valid number for Weight", athleteStr, JOptionPane.ERROR_MESSAGE);
+            } else if (heightReturn == -1) {
+                JOptionPane.showMessageDialog(null, "Please enter a valid number for Height", athleteStr, JOptionPane.ERROR_MESSAGE);
+             
+            } 
+            checkAddBl = false;
+        } else if (weightReturn == 1 || heightReturn == 1) {
             checkAddBl = true;
-        } else if (weightReturn == -1) {
-            JOptionPane.showMessageDialog(null, "Please enter a valid number for Weight", athleteStr, JOptionPane.ERROR_MESSAGE);
-            checkAddBl = false;
-        } else if (heightReturn == 0) {
-            JOptionPane.showMessageDialog(null, "Wrong height, it should between 0-200", athleteStr, JOptionPane.ERROR_MESSAGE);
-            checkAddBl = false;
-        } else if (heightReturn == 1) {
-            checkAddBl = false;
-        } else if (heightReturn == -1) {
-            JOptionPane.showMessageDialog(null, "Please enter a valid number for Height", athleteStr, JOptionPane.ERROR_MESSAGE);
-            checkAddBl = false;
-        }
+        } 
     }
 
 
