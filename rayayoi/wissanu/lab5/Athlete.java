@@ -7,11 +7,12 @@
  */
 package rayayoi.wissanu.lab5;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
-public class Athlete {
+public class Athlete implements Serializable {
     //creat enum
     public enum Gender {
         MALE,FEMALE
@@ -21,7 +22,7 @@ public class Athlete {
     protected LocalDate birthdate;
     protected double weight, height;
     protected Gender gender;
-    protected DateTimeFormatter formatter  = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    //protected DateTimeFormatter formatter  = DateTimeFormatter.ofPattern("dd/MM/yyyy");
     //Creat contructor 
     public Athlete(String name, double weight, double height, Gender gender, String nationality, String birthdateToString) {
         this.name = name;
@@ -30,6 +31,7 @@ public class Athlete {
         this.gender = gender;
         this.nationality = nationality;
         //Format birthdateToString to type string 
+        DateTimeFormatter formatter  = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         birthdate = LocalDate.parse(String.format("%s", birthdateToString), formatter);
     }
     public String toString(){
@@ -46,7 +48,7 @@ public class Athlete {
 
     public void setNationality(String nationality){ this.nationality = nationality; }
 
-    public void setBirthdate(String birthdateToString){ birthdate = LocalDate.parse(String.format("%s", birthdateToString), formatter); }
+    public void setBirthdate(String birthdateToString){ birthdate = LocalDate.parse(String.format("%s", birthdateToString)); }
 
     //getter method
     public String getName(){ return name; }

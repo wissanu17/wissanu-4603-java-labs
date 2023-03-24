@@ -32,6 +32,7 @@ public class AthleteFormV8 extends AthleteFormV6 implements ActionListener {
     protected ArrayList<JCheckBox> hobbiesArrayList;
     protected String weightStr, nameStr, heightStr, dateStr, genderInfo, hobbiesStr, 
                         nationStr, SportStr, ExperienceStr, resultTxt;
+    protected String newhobbieStr;
 
     public AthleteFormV8(String Window) {
         super(Window);
@@ -112,9 +113,11 @@ public class AthleteFormV8 extends AthleteFormV6 implements ActionListener {
         dateStr = new String(dateField.getText());
         //Get text from hobby check box
         hobbiesStr = new String("");
+        //whobbieStr = new String("");
         for (JCheckBox hobbie : hobbiesArrayList) {
             if (hobbie.isSelected()) {
-                hobbiesStr = hobbiesStr  + hobbie.getText() + " " ;
+                hobbiesStr = hobbiesStr  + hobbie.getText() + ", " ;
+                //newhobbieStr += String.join(", ", hobbiesStr);
             }
         }
         //Get String of experience slider
